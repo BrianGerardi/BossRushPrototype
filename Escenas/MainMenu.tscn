@@ -1,0 +1,221 @@
+[gd_scene load_steps=10 format=3 uid="uid://rwd7512um7ug"]
+
+[ext_resource type="Texture2D" uid="uid://dtfglfucodsbr" path="res://UIAssetsTest/png/Panel/Window/Big.png" id="1_7fw6w"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_rfvfo"]
+[ext_resource type="Texture2D" uid="uid://bnvkjgdm5teem" path="res://UIAssetsTest/png/Buttons/Rect-Medium/PlayText/Default.png" id="2_64g4n"]
+[ext_resource type="Texture2D" uid="uid://ba0jw5eewljet" path="res://UIAssetsTest/png/Buttons/Rect-Medium/PlayText/Hover.png" id="3_562l7"]
+[ext_resource type="Texture2D" uid="uid://bitk08w5xb7kd" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOn/Default.png" id="4_f3x71"]
+[ext_resource type="Texture2D" uid="uid://bmemdoesfur2h" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOn/Hover.png" id="5_61lv5"]
+[ext_resource type="Texture2D" uid="uid://c1d27iu8s2niv" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOff/Default.png" id="7_o1gfq"]
+[ext_resource type="Texture2D" uid="uid://e6pit23lgtun" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOff/Hover.png" id="8_wotr4"]
+
+[sub_resource type="Theme" id="Theme_8kfex"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8kfex")
+script = ExtResource("1_rfvfo")
+
+[node name="MenuPrincipal" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -537.0
+offset_top = -259.5
+offset_right = 537.0
+offset_bottom = 259.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7fw6w")
+region_rect = Rect2(36, 23, 546, 351)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPrincipal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="TextureButton" parent="MenuPrincipal/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_64g4n")
+texture_hover = ExtResource("3_562l7")
+
+[node name="Opciones" type="Button" parent="MenuPrincipal/VBoxContainer"]
+layout_mode = 2
+text = "Opciones"
+
+[node name="Exit" type="Button" parent="MenuPrincipal/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[node name="MuteOn" type="TextureButton" parent="MenuPrincipal"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = -142.0
+offset_right = 141.0
+offset_bottom = -54.0
+grow_vertical = 0
+texture_normal = ExtResource("4_f3x71")
+texture_hover = ExtResource("5_61lv5")
+
+[node name="MuteOff" type="TextureButton" parent="MenuPrincipal"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = -142.0
+offset_right = 141.0
+offset_bottom = -54.0
+grow_vertical = 0
+texture_normal = ExtResource("7_o1gfq")
+texture_hover = ExtResource("8_wotr4")
+
+[node name="OpcionesPanel" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7fw6w")
+region_rect = Rect2(40.5128, 8.64102, 530.051, 346.872)
+patch_margin_top = 19
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpcionesPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Volumen" type="Button" parent="OpcionesPanel/VBoxContainer"]
+layout_mode = 2
+text = "Volumen"
+
+[node name="Volver" type="Button" parent="OpcionesPanel/VBoxContainer"]
+layout_mode = 2
+text = "Volver"
+
+[node name="Tittle" type="Label" parent="OpcionesPanel"]
+layout_mode = 2
+offset_left = 159.5
+offset_top = 33.0
+offset_right = 240.5
+offset_bottom = 56.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "OPCIONES"
+horizontal_alignment = 1
+
+[node name="Volumen" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7fw6w")
+region_rect = Rect2(40.5128, 8.64102, 530.051, 346.872)
+patch_margin_top = 19
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Volumen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MasterLabel" type="Label" parent="Volumen/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="Master" type="HSlider" parent="Volumen/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="Volumen/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="Master2" type="HSlider" parent="Volumen/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="Volumen/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="Master3" type="HSlider" parent="Volumen/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolverVolumenes" type="Button" parent="Volumen/VBoxContainer"]
+layout_mode = 2
+text = "Volver"
+
+[node name="Tittle" type="Label" parent="Volumen"]
+layout_mode = 2
+offset_left = 159.5
+offset_top = 33.0
+offset_right = 240.5
+offset_bottom = 56.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "VOLUMEN"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MenuPrincipal/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="MenuPrincipal/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MenuPrincipal/MuteOn" to="." method="_on_mute_on_pressed"]
+[connection signal="pressed" from="MenuPrincipal/MuteOff" to="." method="_on_mute_off_pressed"]
+[connection signal="pressed" from="OpcionesPanel/VBoxContainer/Volumen" to="." method="_on_volumen_pressed"]
+[connection signal="pressed" from="OpcionesPanel/VBoxContainer/Volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="Volumen/VBoxContainer/VolverVolumenes" to="." method="_on_volver_volumenes_pressed"]

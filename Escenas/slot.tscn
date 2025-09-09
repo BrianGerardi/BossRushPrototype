@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cevffbix1ceaq"]
+
+[ext_resource type="Script" path="res://Scripts/slot.gd" id="1_8d5qj"]
+[ext_resource type="Texture2D" uid="uid://blvbwn7vr3pg2" path="res://UIAssetsTest/png/Level/Button/Unlocked/Hover.png" id="2_pwfay"]
+
+[node name="Slot" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1820.0
+offset_bottom = -980.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8d5qj")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_pwfay")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
