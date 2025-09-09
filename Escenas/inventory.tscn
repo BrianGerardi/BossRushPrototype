@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://biktymr8rkunt"]
+[gd_scene load_steps=7 format=3 uid="uid://biktymr8rkunt"]
 
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="1_7v67p"]
-[ext_resource type="Texture2D" uid="uid://dtfglfucodsbr" path="res://UIAssetsTest/png/Panel/Window/Big.png" id="1_k4ovw"]
+[ext_resource type="Texture2D" uid="uid://blvbwn7vr3pg2" path="res://UIAssetsTest/png/Level/Button/Unlocked/Hover.png" id="2_w18j0"]
+[ext_resource type="PackedScene" uid="uid://cevffbix1ceaq" path="res://Escenas/slot.tscn" id="3_uonyg"]
+[ext_resource type="Resource" uid="uid://db0pkpc0axsce" path="res://Items/estrellita.tres" id="4_fwcmd"]
+[ext_resource type="Resource" uid="uid://s2pea5pus7ti" path="res://Items/new_resource.tres" id="5_8gl0h"]
+[ext_resource type="Resource" uid="uid://blu75yudwsxy0" path="res://Items/espadon.tres" id="6_g8csi"]
 
-[node name="Inventory" type="Control"]
+[node name="InventoryUI" type="Control" node_paths=PackedStringArray("description")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,25 +15,142 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7v67p")
+description = NodePath("Inventory/Description")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Inventory" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -400.0
-offset_right = 500.0
-offset_bottom = 400.0
+offset_left = -625.0
+offset_top = -277.5
+offset_right = 375.0
+offset_bottom = 277.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_k4ovw")
-region_rect = Rect2(0, -0.551489, 607.287, 408.551)
+texture = ExtResource("2_w18j0")
+region_rect = Rect2(1.84364, -0.289043, 84.434, 81.3496)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 11
+patch_margin_bottom = 8
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="GridContainer" type="GridContainer" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -187.0
+offset_right = 460.0
+offset_bottom = 177.0
+grow_vertical = 2
 columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+item = ExtResource("4_fwcmd")
+
+[node name="Slot2" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+item = ExtResource("5_8gl0h")
+
+[node name="Slot3" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+item = ExtResource("6_g8csi")
+
+[node name="Slot4" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot5" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot6" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot7" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot8" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot9" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot10" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot11" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot12" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot13" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot14" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot15" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Slot16" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
+layout_mode = 2
+
+[node name="Description" type="NinePatchRect" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -470.0
+offset_top = -180.0
+offset_right = -135.0
+offset_bottom = 172.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_w18j0")
+patch_margin_left = 10
+patch_margin_top = 6
+patch_margin_right = 11
+patch_margin_bottom = 14
+
+[node name="Name" type="Label" parent="Inventory/Description"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.5
+offset_top = 35.0
+offset_right = 140.5
+offset_bottom = 112.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Inventory/Description"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 257.0
+offset_right = 323.0
+offset_bottom = 339.0
+
+[node name="ItemDescription" type="RichTextLabel" parent="Inventory/Description"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = -47.0
+offset_right = 144.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_active = false
