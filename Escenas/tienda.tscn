@@ -121,3 +121,5 @@ unique_name_in_owner = true
 
 [connection signal="body_entered" from="AreaTienda" to="." method="_on_area_tienda_body_entered"]
 [connection signal="body_exited" from="AreaTienda" to="." method="_on_area_tienda_body_exited"]
+
+[editable path="InventoryUI"]
