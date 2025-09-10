@@ -1,0 +1,123 @@
+[gd_scene load_steps=18 format=3 uid="uid://dohu27hnvurmy"]
+
+[ext_resource type="Script" path="res://Scripts/tienda.gd" id="1_rk3le"]
+[ext_resource type="Texture2D" uid="uid://5bweyxoiieip" path="res://AssetsDeTest/Props_Items_(animated)/lootchest_item_anim_strip_8.png" id="2_82n46"]
+[ext_resource type="Texture2D" uid="uid://dq6ekpw047o6s" path="res://AssetsDeTest/Hud_Ui/F-Key.png" id="3_cixhk"]
+[ext_resource type="PackedScene" uid="uid://biktymr8rkunt" path="res://Escenas/inventory.tscn" id="4_ml5id"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyq0j"]
+atlas = ExtResource("2_82n46")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl3ji"]
+atlas = ExtResource("2_82n46")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi3wn"]
+atlas = ExtResource("2_82n46")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlmib"]
+atlas = ExtResource("2_82n46")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l7cv"]
+atlas = ExtResource("2_82n46")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blte5"]
+atlas = ExtResource("2_82n46")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trfxo"]
+atlas = ExtResource("2_82n46")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uweq2"]
+atlas = ExtResource("2_82n46")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0bvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyq0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl3ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi3wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlmib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l7cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blte5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trfxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uweq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfhe5"]
+size = Vector2(66, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8f2l"]
+atlas = ExtResource("3_cixhk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpgwr"]
+atlas = ExtResource("3_cixhk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l42ur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8f2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpgwr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Tienda" type="Node2D"]
+script = ExtResource("1_rk3le")
+
+[node name="AnimacionTienda" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_h0bvo")
+autoplay = "default"
+frame_progress = 0.751647
+
+[node name="AreaTienda" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTienda"]
+position = Vector2(-1, -14)
+shape = SubResource("RectangleShape2D_gfhe5")
+
+[node name="SpritePressF" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -60)
+sprite_frames = SubResource("SpriteFrames_l42ur")
+autoplay = "default"
+frame_progress = 0.206074
+
+[node name="InventoryUI" parent="." instance=ExtResource("4_ml5id")]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="AreaTienda" to="." method="_on_area_tienda_body_entered"]
+[connection signal="body_exited" from="AreaTienda" to="." method="_on_area_tienda_body_exited"]
