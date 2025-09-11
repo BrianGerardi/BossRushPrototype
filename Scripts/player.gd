@@ -1,12 +1,24 @@
 extends CharacterBody2D
 @onready var animaciones: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var escena_disparo : PackedScene = preload("res://Escenas/disparo.tscn")
+var posicion_mouse : Vector2
 @export var velocidad_de_movimiento = 100.0
+@onready var arma_player: Node2D = %ArmaPlayer
+
 var last_direction = "down"
 func _ready() -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
+	posicion_mouse = get_global_mouse_position()
+	arma_player.look_at(posicion_mouse)
+	if Input.is_action_just_pressed("ataque"):
+		var direccion = (posicion_mouse-position).normalized()
+		print("DISPARAR")
+		var instancia_disparo : Node2D= escena_disparo.instantiate()
+		instancia_disparo.rotation = arma_player.global_rotation #para que apunte correctamente, porque el disparo solo va hacia su adelante
+		instancia_disparo.global_position = arma_player.global_position #lo coloco en la posicion del arma
+		get_tree().current_scene.add_child(instancia_disparo)
 	get_input()
 	move_and_slide()
 

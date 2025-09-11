@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://jl1im8t5lps2"]
+[gd_scene load_steps=89 format=3 uid="uid://jl1im8t5lps2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4smy4"]
 [ext_resource type="Texture2D" uid="uid://c7thrfuotk58y" path="res://AssetsDeTest/Char_Sprites/char_attack_down_anim_strip_6.png" id="2_48v6s"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://4bs3gg01htfn" path="res://AssetsDeTest/Char_Sprites/char_run_left_anim_strip_6.png" id="7_esfcn"]
 [ext_resource type="Texture2D" uid="uid://jc7bdmlb5hmw" path="res://AssetsDeTest/Char_Sprites/char_run_right_anim_strip_6.png" id="8_ucdcg"]
 [ext_resource type="Texture2D" uid="uid://ckuda6ptahs44" path="res://AssetsDeTest/Char_Sprites/char_run_up_anim_strip_6.png" id="9_t0bx1"]
+[ext_resource type="PackedScene" uid="uid://doq5gnqwbvhr5" path="res://Escenas/arma_player.tscn" id="14_8vhtm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcfbq"]
 radius = 8.0
@@ -597,3 +598,6 @@ shape = SubResource("CapsuleShape2D_kcfbq")
 sprite_frames = SubResource("SpriteFrames_4ah6w")
 animation = &"attack_up"
 autoplay = "idle_down"
+
+[node name="ArmaPlayer" parent="." instance=ExtResource("14_8vhtm")]
+unique_name_in_owner = true

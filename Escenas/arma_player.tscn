@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://doq5gnqwbvhr5"]
+
+[ext_resource type="Script" path="res://Scripts/arma_player.gd" id="1_nxrkf"]
+[ext_resource type="Texture2D" uid="uid://ccyd5knk8hdbq" path="res://UIAssetsTest/png/Panel/Header.png" id="2_g827x"]
+
+[node name="ArmaPlayer" type="Node2D" node_paths=PackedStringArray("sprite_arma")]
+script = ExtResource("1_nxrkf")
+sprite_arma = NodePath("SpriteArma")
+
+[node name="SpriteArma" type="Sprite2D" parent="."]
+position = Vector2(9.99842, -1.82611)
+scale = Vector2(0.0158915, 0.0504365)
+texture = ExtResource("2_g827x")

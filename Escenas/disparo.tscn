@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckx0lousy7n4f"]
+
+[ext_resource type="Script" path="res://Scripts/disparo.gd" id="1_dkyb1"]
+[ext_resource type="Texture2D" uid="uid://csk04y67uldcj" path="res://UIAssetsTest/png/Icon/Home.png" id="1_i2ca0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8rsy"]
+radius = 7.07107
+
+[node name="Disparo" type="Node2D" node_paths=PackedStringArray("sprite_disparo")]
+script = ExtResource("1_dkyb1")
+sprite_disparo = NodePath("Arma")
+
+[node name="Arma" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_i2ca0")
+
+[node name="Area2DDisparo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DDisparo"]
+shape = SubResource("CircleShape2D_u8rsy")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="Area2DDisparo" to="." method="_on_area_2d_disparo_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

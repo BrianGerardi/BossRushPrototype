@@ -116,10 +116,20 @@ sprite_frames = SubResource("SpriteFrames_l42ur")
 autoplay = "default"
 frame_progress = 0.206074
 
-[node name="InventoryUI" parent="." instance=ExtResource("4_ml5id")]
+[node name="ControlUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ControlUI"]
+
+[node name="InventoryUI" parent="ControlUI/CanvasLayer" instance=ExtResource("4_ml5id")]
 unique_name_in_owner = true
 
 [connection signal="body_entered" from="AreaTienda" to="." method="_on_area_tienda_body_entered"]
 [connection signal="body_exited" from="AreaTienda" to="." method="_on_area_tienda_body_exited"]
 
-[editable path="InventoryUI"]
+[editable path="ControlUI/CanvasLayer/InventoryUI"]
