@@ -8,6 +8,6 @@ script = ExtResource("1_nxrkf")
 sprite_arma = NodePath("SpriteArma")
 
 [node name="SpriteArma" type="Sprite2D" parent="."]
-position = Vector2(9.99842, -1.82611)
-scale = Vector2(0.0158915, 0.0504365)
+position = Vector2(20, -3)
+scale = Vector2(0.0183333, 0.0504365)
 texture = ExtResource("2_g827x")
