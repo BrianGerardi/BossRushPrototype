@@ -30,6 +30,7 @@ mouse_cursor/custom_image="res://Assets/cursores mouse/target_b.png"
 [global_group]
 
 enemigo="aca agregar al boss y otros enemigos si los hubiera"
+jugador=""
 
 [input]
 
