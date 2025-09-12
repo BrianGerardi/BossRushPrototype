@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oo56uilfkdi5"]
+
+[ext_resource type="Texture2D" uid="uid://4y7os78ew4r4" path="res://AssetsDeTest/Hud_Ui/health_hud.png" id="1_qvxkp"]
+
+[node name="Vidas1" type="TextureRect"]
+texture = ExtResource("1_qvxkp")

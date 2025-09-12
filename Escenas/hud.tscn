@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dndaju0u8g58y"]
+[gd_scene load_steps=4 format=3 uid="uid://dndaju0u8g58y"]
 
-[ext_resource type="Texture2D" uid="uid://4y7os78ew4r4" path="res://AssetsDeTest/Hud_Ui/health_hud.png" id="1_2jqbs"]
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_peajc"]
 [ext_resource type="Texture2D" uid="uid://dqee1ot5vjbms" path="res://AssetsDeTest/Hud_Ui/moneda_asset_Test.png" id="2_gofhf"]
+[ext_resource type="PackedScene" uid="uid://oo56uilfkdi5" path="res://Escenas/icono_vida.tscn" id="2_uqmck"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -10,34 +11,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_peajc")
 
 [node name="LayerPrincipal" type="CanvasLayer" parent="."]
 
 [node name="HBoxVidas" type="HBoxContainer" parent="LayerPrincipal"]
+unique_name_in_owner = true
 offset_left = 35.0
 offset_top = 35.0
 offset_right = 331.0
 offset_bottom = 75.0
 
-[node name="Vidas1" type="TextureRect" parent="LayerPrincipal/HBoxVidas"]
+[node name="Vidas1" parent="LayerPrincipal/HBoxVidas" instance=ExtResource("2_uqmck")]
 layout_mode = 2
-texture = ExtResource("1_2jqbs")
 
-[node name="Vidas2" type="TextureRect" parent="LayerPrincipal/HBoxVidas"]
+[node name="Vidas2" parent="LayerPrincipal/HBoxVidas" instance=ExtResource("2_uqmck")]
 layout_mode = 2
-texture = ExtResource("1_2jqbs")
 
-[node name="Vidas3" type="TextureRect" parent="LayerPrincipal/HBoxVidas"]
+[node name="Vidas3" parent="LayerPrincipal/HBoxVidas" instance=ExtResource("2_uqmck")]
 layout_mode = 2
-texture = ExtResource("1_2jqbs")
 
-[node name="Vidas4" type="TextureRect" parent="LayerPrincipal/HBoxVidas"]
+[node name="Vidas4" parent="LayerPrincipal/HBoxVidas" instance=ExtResource("2_uqmck")]
 layout_mode = 2
-texture = ExtResource("1_2jqbs")
 
-[node name="Vidas5" type="TextureRect" parent="LayerPrincipal/HBoxVidas"]
+[node name="Vidas5" parent="LayerPrincipal/HBoxVidas" instance=ExtResource("2_uqmck")]
 layout_mode = 2
-texture = ExtResource("1_2jqbs")
 
 [node name="HBoxMonedas" type="HBoxContainer" parent="LayerPrincipal"]
 anchors_preset = 1
@@ -57,6 +55,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CantMonedas" type="Label" parent="LayerPrincipal/HBoxMonedas"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "12"

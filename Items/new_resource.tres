@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://s2pea5pus7ti"]
 
-[ext_resource type="Texture2D" uid="uid://bt1crgpkxfhl7" path="res://UIAssetsTest/png/Star/Medium/Unactive.png" id="1_l1t0f"]
+[ext_resource type="Texture2D" uid="uid://dkoihlvdn7f8x" path="res://UIAssetsTest/png/Star/Large/Active.png" id="1_81h4k"]
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="2_povon"]
 
 [resource]
 script = ExtResource("2_povon")
-name = "estrellina2"
-icon = ExtResource("1_l1t0f")
-itemdescription = "pepito peposo"
+name = "estrellaroja"
+icon = ExtResource("1_81h4k")
+itemdescription = "abcdef"
+precio = 2
