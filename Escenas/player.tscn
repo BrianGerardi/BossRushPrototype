@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://jl1im8t5lps2"]
+[gd_scene load_steps=105 format=3 uid="uid://jl1im8t5lps2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4smy4"]
 [ext_resource type="Texture2D" uid="uid://c7thrfuotk58y" path="res://AssetsDeTest/Char_Sprites/char_attack_down_anim_strip_6.png" id="2_48v6s"]
@@ -9,10 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://pp8dyrp74g3e" path="res://AssetsDeTest/Char_Sprites/char_attack_right_anim_strip_6.png" id="4_5dsd0"]
 [ext_resource type="Texture2D" uid="uid://dojd8x85p7hil" path="res://AssetsDeTest/Char_Sprites/char_attack_up_anim_strip_6.png" id="5_os7fq"]
 [ext_resource type="Texture2D" uid="uid://b4y54g8s5ydpx" path="res://AssetsDeTest/Char_Sprites/char_idle_up_anim_strip_6.png" id="5_oyhd7"]
+[ext_resource type="Texture2D" uid="uid://du65lfmbt5s5r" path="res://Assets/Arte/shadeout/Osvaldo_LUZ_CORRIENDO.png" id="6_f050k"]
 [ext_resource type="Texture2D" uid="uid://c01h0cpvnyjsf" path="res://AssetsDeTest/Char_Sprites/char_run_down_anim_strip_6.png" id="6_hojps"]
 [ext_resource type="Texture2D" uid="uid://4bs3gg01htfn" path="res://AssetsDeTest/Char_Sprites/char_run_left_anim_strip_6.png" id="7_esfcn"]
+[ext_resource type="Texture2D" uid="uid://d4eu00f43xre0" path="res://Assets/Arte/shadeout/Osvaldo_LUZ_DAÑO.png" id="8_pf217"]
 [ext_resource type="Texture2D" uid="uid://jc7bdmlb5hmw" path="res://AssetsDeTest/Char_Sprites/char_run_right_anim_strip_6.png" id="8_ucdcg"]
 [ext_resource type="Texture2D" uid="uid://ckuda6ptahs44" path="res://AssetsDeTest/Char_Sprites/char_run_up_anim_strip_6.png" id="9_t0bx1"]
+[ext_resource type="Texture2D" uid="uid://081qa16ioq31" path="res://Assets/Arte/shadeout/Osvaldo_LUZ_QUIETO.png" id="13_6xt4w"]
+[ext_resource type="PackedScene" uid="uid://doq5gnqwbvhr5" path="res://Escenas/arma_player.tscn" id="14_8vhtm"]
+[ext_resource type="Texture2D" uid="uid://vy6yxn02qxla" path="res://Assets/Arte/shadeout/Osvaldo_LUZ_SALTO.png" id="15_5cm5h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcfbq"]
 radius = 8.0
@@ -114,6 +119,30 @@ region = Rect2(192, 0, 48, 32)
 atlas = ExtResource("5_os7fq")
 region = Rect2(240, 0, 48, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5oho"]
+atlas = ExtResource("15_5cm5h")
+region = Rect2(102, 0, 34, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfnly"]
+atlas = ExtResource("6_f050k")
+region = Rect2(0, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67i66"]
+atlas = ExtResource("6_f050k")
+region = Rect2(33, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soqmf"]
+atlas = ExtResource("6_f050k")
+region = Rect2(66, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qar7u"]
+atlas = ExtResource("6_f050k")
+region = Rect2(99, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n83fa"]
+atlas = ExtResource("8_pf217")
+region = Rect2(0, 0, 31, 47)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_87sxf"]
 atlas = ExtResource("2_lyduq")
 region = Rect2(0, 0, 16, 16)
@@ -209,6 +238,18 @@ region = Rect2(64, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m662h"]
 atlas = ExtResource("5_oyhd7")
 region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o81ao"]
+atlas = ExtResource("13_6xt4w")
+region = Rect2(0, 0, 30, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2a13"]
+atlas = ExtResource("13_6xt4w")
+region = Rect2(30, 0, 30, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl4tw"]
+atlas = ExtResource("13_6xt4w")
+region = Rect2(60, 0, 30, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7g2n0"]
 atlas = ExtResource("6_hojps")
@@ -306,6 +347,18 @@ region = Rect2(64, 0, 16, 16)
 atlas = ExtResource("9_t0bx1")
 region = Rect2(80, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlkoh"]
+atlas = ExtResource("15_5cm5h")
+region = Rect2(0, 0, 34, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw0sv"]
+atlas = ExtResource("15_5cm5h")
+region = Rect2(34, 0, 34, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iimg"]
+atlas = ExtResource("15_5cm5h")
+region = Rect2(68, 0, 34, 50)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ah6w"]
 animations = [{
 "frames": [{
@@ -402,6 +455,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_m5oho")
+}],
+"loop": true,
+"name": &"caer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfnly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67i66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soqmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qar7u")
+}],
+"loop": true,
+"name": &"correr",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n83fa")
+}],
+"loop": true,
+"name": &"daño",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_87sxf")
 }, {
 "duration": 1.0,
@@ -494,6 +580,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o81ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2a13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl4tw")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7g2n0")
 }, {
 "duration": 1.0,
@@ -583,6 +683,20 @@ animations = [{
 "loop": true,
 "name": &"run_up",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlkoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw0sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1iimg")
+}],
+"loop": true,
+"name": &"saltar",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -594,6 +708,10 @@ scale = Vector2(0.559999, 1)
 shape = SubResource("CapsuleShape2D_kcfbq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4ah6w")
-animation = &"attack_up"
-autoplay = "idle_down"
+animation = &"daño"
+autoplay = "quieto"
+
+[node name="ArmaPlayer" parent="." instance=ExtResource("14_8vhtm")]
+unique_name_in_owner = true
