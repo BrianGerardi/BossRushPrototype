@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animaciones: AnimatedSprite2D = $AnimatedSprite2D
 @onready var escena_disparo : PackedScene = preload("res://Escenas/disparo.tscn")
 @onready var arma_player: Node2D = %ArmaPlayer
-@export var velocidad_caminar : float = 70.0
+@export var velocidad_caminar : float = 200.0
 @export var fuerza_de_salto : float = 400
 var posicion_mouse : Vector2
 enum estados_player {
