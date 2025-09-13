@@ -1,10 +1,17 @@
-[gd_scene load_steps=95 format=3 uid="uid://dqrtg1ligbr21"]
+[gd_scene load_steps=101 format=3 uid="uid://dqrtg1ligbr21"]
 
+[ext_resource type="Script" path="res://Scripts/king_boss.gd" id="1_lqdpk"]
 [ext_resource type="Texture2D" uid="uid://bw3yqstmmittk" path="res://AssetsDeTest/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_monhc"]
 [ext_resource type="Texture2D" uid="uid://bhvdhbs5727lp" path="res://AssetsDeTest/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_qn1cl"]
-[ext_resource type="Script" path="res://Escenas/pivot.gd" id="2_wfqr4"]
 [ext_resource type="Script" path="res://Escenas/finite_state_machine.gd" id="3_fhqe2"]
 [ext_resource type="Script" path="res://GolemBossState.gd" id="4_763yg"]
+[ext_resource type="Script" path="res://Scripts/idle.gd" id="5_wexd0"]
+[ext_resource type="Script" path="res://Scripts/follow.gd" id="7_lg4vt"]
+[ext_resource type="Script" path="res://Scripts/melee_attack.gd" id="7_xcsdl"]
+[ext_resource type="Script" path="res://Scripts/homing_missile.gd" id="8_n58y3"]
+[ext_resource type="PackedScene" uid="uid://dyo2alwdwtnqp" path="res://Escenas/brazo_misil.tscn" id="9_f0w3e"]
+[ext_resource type="Script" path="res://Scripts/laser_beam.gd" id="10_kjlel"]
+[ext_resource type="Script" path="res://Scripts/dash.gd" id="12_dca6o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3ev6"]
 radius = 15.2971
@@ -462,7 +469,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_siuof")
 }],
-"loop": true,
+"loop": false,
 "name": &"laser_cast",
 "speed": 8.0
 }, {
@@ -523,7 +530,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k74v3")
 }],
-"loop": true,
+"loop": false,
 "name": &"ranged_attack",
 "speed": 8.0
 }]
@@ -635,8 +642,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q4e07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gunb")
 }],
-"loop": true,
+"loop": false,
 "name": &"laser",
 "speed": 8.0
 }]
@@ -646,14 +656,13 @@ radius = 22.0
 height = 46.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex3ni"]
-radius = 44.0114
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rccmi"]
-radius = 127.0
+radius = 98.1835
 
 [node name="KingBoss" type="CharacterBody2D"]
+position = Vector2(93, 72)
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_lqdpk")
 
 [node name="Area2D_DañoMele" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -672,7 +681,6 @@ autoplay = "idle"
 
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2(0, -18)
-script = ExtResource("2_wfqr4")
 
 [node name="RangeSprites" type="AnimatedSprite2D" parent="Pivot"]
 unique_name_in_owner = true
@@ -684,6 +692,7 @@ frame_progress = 0.346396
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
+visible = false
 custom_minimum_size = Vector2(200, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -751,29 +760,31 @@ shape = SubResource("CircleShape2D_ex3ni")
 script = ExtResource("3_fhqe2")
 
 [node name="Idle" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_763yg")
+script = ExtResource("5_wexd0")
 
 [node name="MeleeAttack" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_763yg")
+script = ExtResource("7_xcsdl")
 
 [node name="HomingMissile" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_763yg")
+script = ExtResource("8_n58y3")
+projectil = ExtResource("9_f0w3e")
 
 [node name="ArmorBuff" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("4_763yg")
 
 [node name="LaserBeam" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_763yg")
+script = ExtResource("10_kjlel")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("4_763yg")
 
-[node name="PlayerDetection_medium" type="Area2D" parent="."]
+[node name="Follow" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_lg4vt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection_medium"]
-shape = SubResource("CircleShape2D_rccmi")
+[node name="Dash" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("12_dca6o")
 
 [connection signal="body_entered" from="Area2D_DañoMele" to="FiniteStateMachine/MeleeAttack" method="_on_area_2d_daño_mele_body_entered"]
 [connection signal="frame_changed" from="AnimatedSprite2D_animacionesgolem" to="FiniteStateMachine/MeleeAttack" method="_on_animated_sprite_2d_animacionesgolem_frame_changed"]
+[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/MeleeAttack" method="_on_player_detection_body_entered"]
-[connection signal="body_entered" from="PlayerDetection_medium" to="FiniteStateMachine/LaserBeam" method="_on_player_detection_medium_body_entered"]
