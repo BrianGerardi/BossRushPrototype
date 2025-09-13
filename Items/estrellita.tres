@@ -1,11 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://db0pkpc0axsce"]
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://db0pkpc0axsce"]
 
-[ext_resource type="Texture2D" uid="uid://b6vbg6xfirrx4" path="res://UIAssetsTest/png/Icon/Star.png" id="1_3ny45"]
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="2_03ykt"]
 
 [resource]
 script = ExtResource("2_03ykt")
-name = "estrella"
-icon = ExtResource("1_3ny45")
-itemdescription = "abc"
-precio = 50
