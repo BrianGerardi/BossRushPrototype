@@ -112,3 +112,7 @@ func actualizar_estado() -> void:
 					estado_actual = estados_player.CORRER
 				else:
 					estado_actual = estados_player.IDLE
+
+
+func aumentar_vida(cantidad : int):
+	pass

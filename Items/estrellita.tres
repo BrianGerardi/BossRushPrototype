@@ -6,3 +6,4 @@
 script = ExtResource("1_dubcv")
 name = ""
 itemdescription = ""
+tipo = 0
