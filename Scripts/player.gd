@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var vida : float = 100.0
 @onready var animaciones: AnimatedSprite2D = $AnimatedSprite2D
 @onready var escena_disparo : PackedScene = preload("res://Escenas/disparo.tscn")
 @onready var arma_player: Node2D = %ArmaPlayer
@@ -28,11 +29,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	actualizar_estado()
 	ejecutar_animaciones()
+	Global.set_posicion_player(global_position)
 
 
 func manejar_input(delta : float):
 	var input_x = Input.get_action_strength("mover_derecha") - Input.get_action_strength("mover_izquierda")
 	if Input.is_action_just_pressed("saltar") and is_on_floor():
+		Global.hacer_daño.emit(1)
 		velocity.y = -fuerza_de_salto
 		estado_actual = estados_player.SALTAR
 	if estado_actual != estados_player.DAÑO:
@@ -69,7 +72,7 @@ func controlar_disparos():
 		var instancia_disparo : Node2D= escena_disparo.instantiate()
 		instancia_disparo.rotation = arma_player.global_rotation #para que apunte correctamente, porque el disparo solo va hacia su adelante
 		instancia_disparo.global_position = arma_player.global_position #lo coloco en la posicion del arma
-		get_tree().current_scene.add_child(instancia_disparo)
+		get_tree().current_scene.add_child(instancia_disparo) #lo agrego como hijo del nivel, no de player
 
 
 func aplicar_gravedad(delta : float):
@@ -112,3 +115,15 @@ func actualizar_estado() -> void:
 					estado_actual = estados_player.CORRER
 				else:
 					estado_actual = estados_player.IDLE
+
+func recibir_daño(cantidad : float): #NOTA ESTO NO SE ESTA USANDO
+	#se esta usando otro metodo, borrando las barritas de vida en el HUD, si se acaban ahi mismo se llama 
+	#a la signal game over
+	#perooo si decidimos cambiarlo a valores de vida, usamos esta forma
+	
+	#	vida -= cantidad
+#	if vida <= 0:
+#		print("game over")
+#		Global.game_over.emit()
+	pass
+	

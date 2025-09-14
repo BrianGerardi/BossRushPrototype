@@ -3,7 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/king_boss.gd" id="1_lqdpk"]
 [ext_resource type="Texture2D" uid="uid://bw3yqstmmittk" path="res://AssetsDeTest/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_monhc"]
 [ext_resource type="Texture2D" uid="uid://bhvdhbs5727lp" path="res://AssetsDeTest/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_qn1cl"]
-[ext_resource type="Script" path="res://Escenas/finite_state_machine.gd" id="3_fhqe2"]
+
+[ext_resource type="Script" path="res://Scripts/pivot.gd" id="2_wfqr4"]
+[ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="3_fhqe2"]
 [ext_resource type="Script" path="res://GolemBossState.gd" id="4_763yg"]
 [ext_resource type="Script" path="res://Scripts/idle.gd" id="5_wexd0"]
 [ext_resource type="Script" path="res://Scripts/follow.gd" id="7_lg4vt"]
