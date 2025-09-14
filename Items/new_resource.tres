@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://s2pea5pus7ti"]
+[gd_resource type="Resource" script_class="items" load_steps=2 format=3 uid="uid://s2pea5pus7ti"]
 
-[ext_resource type="Script" path="res://Scripts/Item.gd" id="2_povon"]
+[ext_resource type="Script" path="res://Scripts/items.gd" id="1_lqvhw"]
 
 [resource]
-script = ExtResource("2_povon")
+script = ExtResource("1_lqvhw")
 name = ""
 itemdescription = ""
-precio = 0
+tipo = 0

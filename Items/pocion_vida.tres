@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="items" load_steps=3 format=3 uid="uid://higtqdcxl4ta"]
+
+[ext_resource type="Script" path="res://Scripts/items.gd" id="1_mnxkk"]
+[ext_resource type="Texture2D" uid="uid://c7fqdo60u1dj6" path="res://AssetsDeTest/Props_Items_(animated)/health_potion_item.png" id="1_sqkvi"]
+
+[resource]
+script = ExtResource("1_mnxkk")
+name = "potion"
+icon = ExtResource("1_sqkvi")
+itemdescription = "da +5 de vida al jugador"

@@ -127,3 +127,6 @@ func recibir_daño(cantidad : float): #NOTA ESTO NO SE ESTA USANDO
 #		Global.game_over.emit()
 	pass
 	
+
+func aumentar_vida(cantidad : int):
+	pass
