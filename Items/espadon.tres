@@ -1,12 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://blu75yudwsxy0"]
+[gd_resource type="Resource" script_class="items" load_steps=2 format=3 uid="uid://blu75yudwsxy0"]
 
-[ext_resource type="Texture2D" uid="uid://vr3inv5kk46i" path="res://UIAssetsTest/png/Level/Button/Locked/Hover.png" id="1_x8hgn"]
-[ext_resource type="Script" path="res://Scripts/Item.gd" id="2_2xcs4"]
+[ext_resource type="Script" path="res://Scripts/items.gd" id="1_mt56q"]
 
 [resource]
-script = ExtResource("2_2xcs4")
-name = "Espadon"
-icon = ExtResource("1_x8hgn")
-itemdescription = "Daño: 4
-Daño perforante: 1
-Esta espada es de pepito"
+script = ExtResource("1_mt56q")
+name = ""
+itemdescription = ""

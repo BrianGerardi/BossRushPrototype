@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@export var item : Item:
+@export var item : items:
 	set (value):
 		item = value
 		$Icon.texture = item.icon
