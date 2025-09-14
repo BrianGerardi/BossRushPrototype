@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dohu27hnvurmy"]
+[gd_scene load_steps=21 format=3 uid="uid://dohu27hnvurmy"]
 
 [ext_resource type="Script" path="res://Scripts/tienda.gd" id="1_rk3le"]
 [ext_resource type="Texture2D" uid="uid://5bweyxoiieip" path="res://AssetsDeTest/Props_Items_(animated)/lootchest_item_anim_strip_8.png" id="2_82n46"]
 [ext_resource type="Texture2D" uid="uid://dq6ekpw047o6s" path="res://AssetsDeTest/Hud_Ui/F-Key.png" id="3_cixhk"]
-[ext_resource type="PackedScene" uid="uid://biktymr8rkunt" path="res://Escenas/inventory.tscn" id="4_ml5id"]
+[ext_resource type="PackedScene" uid="uid://dqgyppt4lx8gq" path="res://Escenas/inventory_shop.tscn" id="4_m8k36"]
+[ext_resource type="Texture2D" uid="uid://c7fqdo60u1dj6" path="res://AssetsDeTest/Props_Items_(animated)/health_potion_item.png" id="5_6daeb"]
+[ext_resource type="Script" path="res://Scripts/pocion_vida_1.gd" id="6_x2ugh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyq0j"]
 atlas = ExtResource("2_82n46")
@@ -94,6 +96,15 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Resource" id="Resource_kyvbt"]
+script = ExtResource("6_x2ugh")
+vida_extra = 3
+name = "SUPER POCION"
+icon = ExtResource("5_6daeb")
+itemdescription = "SUMA 3 DE VIDA AL JUGADOR"
+precio = 2
+tipo = 0
+
 [node name="Tienda" type="Node2D"]
 script = ExtResource("1_rk3le")
 
@@ -124,12 +135,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="ControlUI"]
-
-[node name="InventoryUI" parent="ControlUI/CanvasLayer" instance=ExtResource("4_ml5id")]
+[node name="LayerTienda" type="CanvasLayer" parent="ControlUI"]
 unique_name_in_owner = true
+
+[node name="InventoryUITienda" parent="ControlUI/LayerTienda" node_paths=PackedStringArray("description") instance=ExtResource("4_m8k36")]
+description = NodePath("Inventory/Description")
+
+[node name="Slot" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="0" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot2" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="1" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot3" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="2" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot4" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="3" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot5" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="4" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot6" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="5" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot7" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="6" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+item = SubResource("Resource_kyvbt")
+
+[node name="Slot8" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="7" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot9" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="8" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot10" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="9" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot11" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="10" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot12" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="11" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot13" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="12" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot14" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="13" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot15" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="14" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
+
+[node name="Slot16" parent="ControlUI/LayerTienda/InventoryUITienda/Inventory/GridContainer" index="15" node_paths=PackedStringArray("padre")]
+padre = NodePath("../../..")
 
 [connection signal="body_entered" from="AreaTienda" to="." method="_on_area_tienda_body_entered"]
 [connection signal="body_exited" from="AreaTienda" to="." method="_on_area_tienda_body_exited"]
 
-[editable path="ControlUI/CanvasLayer/InventoryUI"]
+[editable path="ControlUI/LayerTienda/InventoryUITienda"]
