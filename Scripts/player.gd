@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 func manejar_input(delta : float):
 	var input_x = Input.get_action_strength("mover_derecha") - Input.get_action_strength("mover_izquierda")
 	if Input.is_action_just_pressed("saltar") and is_on_floor():
+		Global.hacer_daño.emit(1)
 		velocity.y = -fuerza_de_salto
 		estado_actual = estados_player.SALTAR
 	if estado_actual != estados_player.DAÑO:
@@ -115,8 +116,14 @@ func actualizar_estado() -> void:
 				else:
 					estado_actual = estados_player.IDLE
 
-func recibir_daño(cantidad : float):
-	vida -= cantidad
-	if vida <= 0:
-		print("game over")
-		Global.game_over.emit()
+func recibir_daño(cantidad : float): #NOTA ESTO NO SE ESTA USANDO
+	#se esta usando otro metodo, borrando las barritas de vida en el HUD, si se acaban ahi mismo se llama 
+	#a la signal game over
+	#perooo si decidimos cambiarlo a valores de vida, usamos esta forma
+	
+	#	vida -= cantidad
+#	if vida <= 0:
+#		print("game over")
+#		Global.game_over.emit()
+	pass
+	
