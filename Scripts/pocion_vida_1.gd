@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 
 func usar_item(player):
 	player.aumentar_vida(vida_extra)
+	#probando
