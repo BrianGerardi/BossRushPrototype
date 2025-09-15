@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var sprite_press_f := $SpritePressF
-@onready var inventorio_tienda: Control = %InventoryUI
+@onready var inventorio_tienda = %LayerTienda
 var player_cerca : bool = false
 
 func _ready() -> void:

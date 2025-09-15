@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="items" load_steps=2 format=3 uid="uid://db0pkpc0axsce"]
+[gd_resource type="Resource" script_class="items" load_steps=3 format=3 uid="uid://db0pkpc0axsce"]
 
 [ext_resource type="Script" path="res://Scripts/items.gd" id="1_dubcv"]
+[ext_resource type="Texture2D" uid="uid://b6vbg6xfirrx4" path="res://UIAssetsTest/png/Icon/Star.png" id="1_rrkev"]
 
 [resource]
 script = ExtResource("1_dubcv")
-name = ""
-itemdescription = ""
+name = "estrella"
+icon = ExtResource("1_rrkev")
+itemdescription = "no hace nada"
+precio = 3
 tipo = 0

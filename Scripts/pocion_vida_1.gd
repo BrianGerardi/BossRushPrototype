@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func usar_item(player):
-	player.aumentar_vida(vida_extra)
+func usar_item():
+#	player.aumentar_vida(vida_extra)
+	Global.aumentar_vidas.emit(vida_extra)
 	#probando

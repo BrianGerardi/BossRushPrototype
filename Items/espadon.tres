@@ -1,8 +1,12 @@
-[gd_resource type="Resource" script_class="items" load_steps=2 format=3 uid="uid://blu75yudwsxy0"]
+[gd_resource type="Resource" script_class="items" load_steps=3 format=3 uid="uid://blu75yudwsxy0"]
 
+[ext_resource type="Texture2D" uid="uid://dhrpbs3i4lmeo" path="res://Assets/cursores mouse/target_a.svg" id="1_406hs"]
 [ext_resource type="Script" path="res://Scripts/items.gd" id="1_mt56q"]
 
 [resource]
 script = ExtResource("1_mt56q")
-name = ""
-itemdescription = ""
+name = "nada"
+icon = ExtResource("1_406hs")
+itemdescription = "nada"
+precio = 0
+tipo = 0
