@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqgyppt4lx8gq"]
+[gd_scene load_steps=8 format=3 uid="uid://dqgyppt4lx8gq"]
 
 [ext_resource type="Script" path="res://Scripts/inventory_shop.gd" id="1_xyx6w"]
 [ext_resource type="Texture2D" uid="uid://blvbwn7vr3pg2" path="res://UIAssetsTest/png/Level/Button/Unlocked/Hover.png" id="2_y5v1h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://db0pkpc0axsce" path="res://Items/estrellita.tres" id="4_2fh6g"]
 [ext_resource type="Resource" uid="uid://s2pea5pus7ti" path="res://Items/new_resource.tres" id="5_tr8fe"]
 [ext_resource type="Resource" uid="uid://blu75yudwsxy0" path="res://Items/espadon.tres" id="6_fd4s5"]
+[ext_resource type="Resource" uid="uid://cetbe7sxn8hp7" path="res://Items/ak-47.tres" id="7_tf8rm"]
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
@@ -63,6 +64,7 @@ item = ExtResource("6_fd4s5")
 
 [node name="Slot4" parent="Inventory/GridContainer" instance=ExtResource("3_uxle0")]
 layout_mode = 2
+item = ExtResource("7_tf8rm")
 
 [node name="Slot5" parent="Inventory/GridContainer" instance=ExtResource("3_uxle0")]
 layout_mode = 2

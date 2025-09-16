@@ -5,9 +5,14 @@ signal aumentar_vidas(cantidad_vidas : int)
 signal hacer_daño_player(cantidad_daño : int)
 var posicion_player : Vector2
 var monedas_global : int = 0
+signal player_set_cooldown_disparo(tiempo_de_cooldown : float)
+signal cambiar_sprite_disparo(sprite_nuevo : Texture2D)
+signal cambiar_sprite_arma(sprite_nuevo : Texture2D)
+var textura_disparo = null
 
 
 func _ready() -> void:
+	cambiar_sprite_disparo.connect(_on_cambiar_sprite_disparo)
 	cargar_datos() #para guardar las monedas en memoria, más adelante si llegamos meter los items comprados
 
 
@@ -38,3 +43,10 @@ func guardar_datos():
 
 func sumar_monedas(cantidad_monedas: int):
 	monedas_global += cantidad_monedas
+
+
+func _on_cambiar_sprite_disparo(textura_nueva):
+	textura_disparo = textura_nueva
+
+func get_textura_disparo():
+	return textura_disparo

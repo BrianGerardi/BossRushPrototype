@@ -1000,3 +1000,7 @@ frame_progress = 0.0355826
 
 [node name="ArmaPlayer" parent="." instance=ExtResource("14_8vhtm")]
 unique_name_in_owner = true
+
+[node name="TimerDisparar" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

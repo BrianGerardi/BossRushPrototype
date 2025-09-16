@@ -5,7 +5,9 @@ extends CharacterBody2D
 @onready var escena_disparo : PackedScene = preload("res://Escenas/disparo.tscn")
 @onready var arma_player: Node2D = %ArmaPlayer
 @export var velocidad_caminar : float = 200.0
+@onready var timer_disparar: Timer = %TimerDisparar
 @export var fuerza_de_salto : float = 400
+@export var cooldown_disparo : float = 0.7
 var posicion_mouse : Vector2
 enum estados_player {
 	IDLE,
@@ -15,11 +17,12 @@ enum estados_player {
 }
 var estado_actual : estados_player = estados_player.IDLE
 #var velocidad: Vector2 = Vector2.ZERO
-
 var last_direction = "down"
+
 func _ready() -> void:
-	pass
-	
+	Global.player_set_cooldown_disparo.connect(set_cooldown_disparo)
+	timer_disparar.wait_time = cooldown_disparo
+
 func _physics_process(delta: float) -> void:
 	controlar_disparos()
 	manejar_input(delta)
@@ -82,10 +85,7 @@ func controlar_disparos():
 		arma_player.flipear_arma_false()
 	if Input.is_action_just_pressed("ataque"):
 		#print("DISPARAR")
-		var instancia_disparo : Node2D= escena_disparo.instantiate()
-		instancia_disparo.rotation = arma_player.global_rotation #para que apunte correctamente, porque el disparo solo va hacia su adelante
-		instancia_disparo.global_position = arma_player.get_centro_arma_position() #lo coloco en la posicion del arma
-		get_tree().current_scene.add_child(instancia_disparo) #lo agrego como hijo del nivel, no de player
+		intentar_disparar()
 
 
 func recibir_daño(cantidad : float): #NOTA ESTO NO SE ESTA USANDO
@@ -102,3 +102,22 @@ func recibir_daño(cantidad : float): #NOTA ESTO NO SE ESTA USANDO
 
 func aumentar_vida(cantidad : int):
 	pass
+
+func set_cooldown_disparo(tiempo_cooldown : float): #escucha la señal de global
+	#y la señal se emite cuando se compra un arma
+	cooldown_disparo = tiempo_cooldown
+
+
+func intentar_disparar():
+	if not timer_disparar.is_stopped():
+		return #no disparar
+	else:
+		disparar()
+		timer_disparar.start()
+
+
+func disparar():
+	var instancia_disparo : Node2D= escena_disparo.instantiate()
+	instancia_disparo.rotation = arma_player.global_rotation #para que apunte correctamente, porque el disparo solo va hacia su adelante
+	instancia_disparo.global_position = arma_player.get_centro_arma_position() #lo coloco en la posicion del arma
+	get_tree().current_scene.add_child(instancia_disparo) #lo agrego como hijo del nivel, no de player
