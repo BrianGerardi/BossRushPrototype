@@ -6,7 +6,9 @@ var direccion_disparo : Vector2
 var daño = 0
 
 func _ready() -> void:
-	pass # Replace with function body.
+	var textura = Global.get_textura_disparo()
+	if textura!=null:
+		set_textura_disparo(textura)
 
 
 

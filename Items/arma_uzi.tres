@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="arma_equipable" load_steps=4 format=3 uid="uid://cgl132p71d0co"]
+
+[ext_resource type="Texture2D" uid="uid://bolonjs3wmfww" path="res://Assets/armas/UZI.png" id="1_rfsnu"]
+[ext_resource type="Script" path="res://Scripts/arma_equipable.gd" id="2_usoru"]
+[ext_resource type="Texture2D" uid="uid://d1o8qtgaa2s25" path="res://Assets/armas/disparos/disparo_rojo.png" id="3_ruo1b"]
+
+[resource]
+script = ExtResource("2_usoru")
+cooldown_disparar = 0.2
+sprite_disparo = ExtResource("3_ruo1b")
+name = "UZI"
+icon = ExtResource("1_rfsnu")
+itemdescription = "Uzi para rushear b manito"
+precio = 4
+tipo = 2

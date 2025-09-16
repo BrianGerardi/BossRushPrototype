@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqgyppt4lx8gq"]
+[gd_scene load_steps=11 format=3 uid="uid://dqgyppt4lx8gq"]
 
 [ext_resource type="Script" path="res://Scripts/inventory_shop.gd" id="1_xyx6w"]
 [ext_resource type="Texture2D" uid="uid://blvbwn7vr3pg2" path="res://UIAssetsTest/png/Level/Button/Unlocked/Hover.png" id="2_y5v1h"]
@@ -6,6 +6,10 @@
 [ext_resource type="Resource" uid="uid://db0pkpc0axsce" path="res://Items/estrellita.tres" id="4_2fh6g"]
 [ext_resource type="Resource" uid="uid://s2pea5pus7ti" path="res://Items/new_resource.tres" id="5_tr8fe"]
 [ext_resource type="Resource" uid="uid://blu75yudwsxy0" path="res://Items/espadon.tres" id="6_fd4s5"]
+[ext_resource type="Resource" uid="uid://cetbe7sxn8hp7" path="res://Items/ak-47.tres" id="7_tf8rm"]
+[ext_resource type="Resource" uid="uid://cgl132p71d0co" path="res://Items/arma_uzi.tres" id="8_tgtus"]
+[ext_resource type="AudioStream" uid="uid://bafnipkeclj5t" path="res://Sonidos/error-126627.mp3" id="8_xmpds"]
+[ext_resource type="AudioStream" uid="uid://3xrak5o877cc" path="res://Sonidos/compra.wav" id="9_tuo82"]
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
@@ -63,9 +67,11 @@ item = ExtResource("6_fd4s5")
 
 [node name="Slot4" parent="Inventory/GridContainer" instance=ExtResource("3_uxle0")]
 layout_mode = 2
+item = ExtResource("7_tf8rm")
 
 [node name="Slot5" parent="Inventory/GridContainer" instance=ExtResource("3_uxle0")]
 layout_mode = 2
+item = ExtResource("8_tgtus")
 
 [node name="Slot6" parent="Inventory/GridContainer" instance=ExtResource("3_uxle0")]
 layout_mode = 2
@@ -166,3 +172,11 @@ offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 scroll_active = false
+
+[node name="AudioNoAlcanza" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_xmpds")
+
+[node name="AudioCompra" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_tuo82")
