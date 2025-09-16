@@ -50,3 +50,14 @@ func _on_cambiar_sprite_disparo(textura_nueva):
 
 func get_textura_disparo():
 	return textura_disparo
+
+
+func alcanzan_monedas_para_comprar(precio_producto):
+	if monedas_global>=precio_producto:
+		return true
+	else:
+		return false
+
+
+func realizar_compra(precio_producto):
+	monedas_global-= precio_producto

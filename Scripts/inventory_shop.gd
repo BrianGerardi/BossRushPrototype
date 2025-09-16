@@ -14,4 +14,9 @@ func _ready():
 
 func _on_button_comprar_pressed() -> void:
 	if selected_item!= null:
-		selected_item.usar_item()
+		if Global.alcanzan_monedas_para_comprar(selected_item.precio):
+			selected_item.usar_item()
+			%AudioCompra.play()
+			Global.realizar_compra(selected_item.precio)
+		else:
+			%AudioNoAlcanza.play()
