@@ -1,18 +1,17 @@
-[gd_scene load_steps=101 format=3 uid="uid://dqrtg1ligbr21"]
+[gd_scene load_steps=102 format=3 uid="uid://dqrtg1ligbr21"]
 
 [ext_resource type="Script" path="res://Scripts/king_boss.gd" id="1_lqdpk"]
 [ext_resource type="Texture2D" uid="uid://bw3yqstmmittk" path="res://AssetsDeTest/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_monhc"]
 [ext_resource type="Texture2D" uid="uid://bhvdhbs5727lp" path="res://AssetsDeTest/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_qn1cl"]
-
-[ext_resource type="Script" path="res://Scripts/pivot.gd" id="2_wfqr4"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="3_fhqe2"]
-[ext_resource type="Script" path="res://GolemBossState.gd" id="4_763yg"]
 [ext_resource type="Script" path="res://Scripts/idle.gd" id="5_wexd0"]
 [ext_resource type="Script" path="res://Scripts/follow.gd" id="7_lg4vt"]
 [ext_resource type="Script" path="res://Scripts/melee_attack.gd" id="7_xcsdl"]
 [ext_resource type="Script" path="res://Scripts/homing_missile.gd" id="8_n58y3"]
 [ext_resource type="PackedScene" uid="uid://dyo2alwdwtnqp" path="res://Escenas/brazo_misil.tscn" id="9_f0w3e"]
+[ext_resource type="Script" path="res://Scripts/armor_buff.gd" id="9_pgu3k"]
 [ext_resource type="Script" path="res://Scripts/laser_beam.gd" id="10_kjlel"]
+[ext_resource type="Script" path="res://Scripts/death.gd" id="11_iaton"]
 [ext_resource type="Script" path="res://Scripts/dash.gd" id="12_dca6o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3ev6"]
@@ -678,8 +677,10 @@ shape = SubResource("CircleShape2D_a3ev6")
 [node name="AnimatedSprite2D_animacionesgolem" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_5o12g")
-animation = &"laser_cast"
+animation = &"armor_buff"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.955379
 
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2(0, -18)
@@ -694,6 +695,7 @@ frame_progress = 0.346396
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(200, 0)
 anchors_preset = 7
@@ -772,13 +774,13 @@ script = ExtResource("8_n58y3")
 projectil = ExtResource("9_f0w3e")
 
 [node name="ArmorBuff" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_763yg")
+script = ExtResource("9_pgu3k")
 
 [node name="LaserBeam" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("10_kjlel")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_763yg")
+script = ExtResource("11_iaton")
 
 [node name="Follow" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("7_lg4vt")

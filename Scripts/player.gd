@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 func manejar_input(delta : float):
 	var input_x = Input.get_action_strength("mover_derecha") - Input.get_action_strength("mover_izquierda")
 	if Input.is_action_just_pressed("saltar") and is_on_floor():
-		Global.hacer_daño.emit(1)
+		Global.hacer_daño_player.emit(1)
 		velocity.y = -fuerza_de_salto
 		estado_actual = estados_player.SALTAR
 	if estado_actual != estados_player.DAÑO:

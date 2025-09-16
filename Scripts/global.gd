@@ -2,7 +2,7 @@ extends Node
 
 signal game_over #se emite en player, se recibe en hud + los que necesitemos
 signal aumentar_vidas(cantidad_vidas : int)
-signal hacer_daño(cantidad_daño : int)
+signal hacer_daño_player(cantidad_daño : int)
 var posicion_player : Vector2
 var monedas_global : int = 0
 
