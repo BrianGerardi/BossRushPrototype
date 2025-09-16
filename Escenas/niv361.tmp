@@ -30,10 +30,6 @@ position = Vector2(-81, 24)
 scale = Vector2(0.5, 0.5)
 
 [node name="Tienda" parent="." instance=ExtResource("5_8qtk7")]
-position = Vector2(91, 27)
-
-[connection signal="pressed" from="Tienda/ControlUI/LayerTienda/InventoryUITienda/Inventory/Description/ButtonComprar" to="Tienda/ControlUI/LayerTienda/InventoryUITienda" method="_on_button_comprar_pressed"]
+position = Vector2(176, 32)
 
 [editable path="CreadorDeMapas"]
-[editable path="Tienda"]
-[editable path="Tienda/ControlUI/LayerTienda/InventoryUITienda"]
