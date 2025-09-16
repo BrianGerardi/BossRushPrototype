@@ -18,5 +18,6 @@ func _on_button_comprar_pressed() -> void:
 			selected_item.usar_item()
 			%AudioCompra.play()
 			Global.realizar_compra(selected_item.precio)
+			Global.guardar_datos()
 		else:
 			%AudioNoAlcanza.play()
