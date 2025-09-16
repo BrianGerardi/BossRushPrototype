@@ -10,8 +10,6 @@ var posicion_mouse : Vector2
 enum estados_player {
 	IDLE,
 	CORRER,
-	SALTAR,
-	CAER,
 	DAÑO,
 	DISPARAR
 }
@@ -25,96 +23,70 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	controlar_disparos()
 	manejar_input(delta)
-	aplicar_gravedad(delta)
 	move_and_slide()
-	actualizar_estado()
 	ejecutar_animaciones()
 	Global.set_posicion_player(global_position)
 
 
 func manejar_input(delta : float):
-	var input_x = Input.get_action_strength("mover_derecha") - Input.get_action_strength("mover_izquierda")
-	if Input.is_action_just_pressed("saltar") and is_on_floor():
-		Global.hacer_daño_player.emit(1)
-		velocity.y = -fuerza_de_salto
-		estado_actual = estados_player.SALTAR
-	if estado_actual != estados_player.DAÑO:
-		velocity.x = input_x * velocidad_caminar
-		if velocity.x > 0:
-			animaciones.flip_h = false
-		elif velocity.x < 0:
-			animaciones.flip_h = true
+	var input_direction = Input.get_vector("mover_izquierda", "mover_derecha", "mover_arriba", "mover_abajo")
+	
+	if input_direction == Vector2.ZERO:
+		velocity = Vector2.ZERO
+		estado_actual= estados_player.IDLE
 	else:
-		velocity.x = 0
+		velocity = input_direction * velocidad_caminar
+		estado_actual = estados_player.CORRER
+		if abs (input_direction.x) > abs(input_direction.y):
+			if input_direction.x > 0:
+				last_direction = "right"
+				animaciones.flip_h = false
+			else:
+				last_direction = "left"
+				animaciones.flip_h = true
+		else:
+			if input_direction.y >0:
+				last_direction = "down"
+			else:
+				last_direction = "up"
 
 
 func ejecutar_animaciones() -> void:
 	match estado_actual:
 		estados_player.IDLE:
-			animaciones.play("quieto")
+			if last_direction == "up":
+				animaciones.play("idle_arriba_curso")
+			elif last_direction == "down":
+				animaciones.play("idle_abajo_curso")
+			else:
+				animaciones.play("idle_curso")
 		estados_player.CORRER:
-			animaciones.play("correr")
-		estados_player.SALTAR:
-			animaciones.play("saltar")
-		estados_player.CAER:
-			animaciones.play("caer")
+			if last_direction == "up":
+				animaciones.play("arriba_curso")
+			if last_direction == "down":
+				animaciones.play("abajo_curso")
+			if last_direction == "right" or last_direction == "left":
+				animaciones.play("correr_curso")
 		estados_player.DISPARAR:
 		#	animaciones.play("disparar")
 			pass #todavia no la tenemos a esta animacion
 		estados_player.DAÑO:
-			animaciones.play("daño")
+			pass
 
 func controlar_disparos():
 	posicion_mouse = get_global_mouse_position()
 	arma_player.look_at(posicion_mouse)
+	if posicion_mouse.x < global_position.x: #osea que esta apuntando para la izquierda del player
+		arma_player.flipear_arma_true()
+	else:
+		arma_player.flipear_arma_false()
 	if Input.is_action_just_pressed("ataque"):
 		#print("DISPARAR")
 		var instancia_disparo : Node2D= escena_disparo.instantiate()
 		instancia_disparo.rotation = arma_player.global_rotation #para que apunte correctamente, porque el disparo solo va hacia su adelante
-		instancia_disparo.global_position = arma_player.global_position #lo coloco en la posicion del arma
+		instancia_disparo.global_position = arma_player.get_centro_arma_position() #lo coloco en la posicion del arma
 		get_tree().current_scene.add_child(instancia_disparo) #lo agrego como hijo del nivel, no de player
 
-
-func aplicar_gravedad(delta : float):
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-
-
-
-func actualizar_estado() -> void:
-	match estado_actual:
-		estados_player.IDLE:
-			if not is_on_floor():
-				estado_actual = estados_player.CAER
-			elif abs(velocity.x) > 0.1:
-				estado_actual = estados_player.CORRER
-		estados_player.CORRER:
-			if not is_on_floor():
-				estado_actual = estados_player.CAER
-			elif abs(velocity.x) < 0.1:
-				estado_actual = estados_player.IDLE
-		estados_player.SALTAR:
-			if velocity.y > 0:
-				estado_actual = estados_player.CAER
-		estados_player.CAER:
-			if is_on_floor():
-				if abs(velocity.x) > 0.1:
-					estado_actual = estados_player.CORRER
-				else:
-					estado_actual = estados_player.IDLE
-		estados_player.DISPARAR:
-			#todavia no la tenemos pero por si pinta agregar
-			#igual como el arma esta separada del cuerpo lo mejor aca seria poner un animation player
-			pass
-		estados_player.DAÑO:
-			if not animaciones.is_playing():
-				if not is_on_floor():
-					estado_actual = estados_player.CAER
-				elif abs(velocity.x) > 0.1:
-					estado_actual = estados_player.CORRER
-				else:
-					estado_actual = estados_player.IDLE
 
 func recibir_daño(cantidad : float): #NOTA ESTO NO SE ESTA USANDO
 	#se esta usando otro metodo, borrando las barritas de vida en el HUD, si se acaban ahi mismo se llama 

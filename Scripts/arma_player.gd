@@ -13,3 +13,13 @@ func _process(delta: float) -> void:
 
 func set_textura_arma(nueva_textura):
 	sprite_arma.texture = nueva_textura
+
+
+func get_centro_arma_position():
+	return %Marker2DDisparaAca.global_position
+
+func flipear_arma_true():
+	%SpriteArma.flip_v = true
+
+func flipear_arma_false():
+	%SpriteArma.flip_v = false

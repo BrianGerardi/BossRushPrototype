@@ -8,7 +8,7 @@ extends Control
 func _ready() -> void:
 	Global.game_over.connect(_on_game_over)
 	Global.aumentar_vidas.connect(_on_aumentar_vidas)
-	Global.hacer_daño.connect(_on_hacer_daño)
+	Global.hacer_daño_player.connect(_on_hacer_daño)
 
 
 func _physics_process(delta: float) -> void:
