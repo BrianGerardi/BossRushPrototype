@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 	%CantMonedas.text = str(Global.monedas_global)
 
 func _on_game_over():
+	Global.guardar_datos()
 	pass
 
 func _on_aumentar_vidas(cantidad_vidas : int):
