@@ -1,6 +1,6 @@
 extends GolemBossState
 
-var can_transition :bool = false
+var can_transition : bool = false
 
 func enter (): 
 	super.enter()
@@ -10,5 +10,5 @@ func enter ():
 	
 func transition():
 	if can_transition:
-		can_transition = false
 		get_parent().change_state("Follow")
+		can_transition = false
