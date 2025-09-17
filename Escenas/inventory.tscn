@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=10 format=3 uid="uid://biktymr8rkunt"]
-
 
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="1_7v67p"]
 [ext_resource type="Texture2D" uid="uid://blvbwn7vr3pg2" path="res://UIAssetsTest/png/Level/Button/Unlocked/Hover.png" id="2_w18j0"]
@@ -8,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://db0pkpc0axsce" path="res://Items/estrellita.tres" id="4_fwcmd"]
 [ext_resource type="Resource" uid="uid://s2pea5pus7ti" path="res://Items/new_resource.tres" id="5_8gl0h"]
 [ext_resource type="Resource" uid="uid://blu75yudwsxy0" path="res://Items/espadon.tres" id="6_g8csi"]
-
 [ext_resource type="Texture2D" uid="uid://c7fqdo60u1dj6" path="res://AssetsDeTest/Props_Items_(animated)/health_potion_item.png" id="7_karhd"]
 [ext_resource type="Script" path="res://Scripts/pocion_vida_1.gd" id="8_4onxm"]
 
@@ -20,7 +17,6 @@ icon = ExtResource("7_karhd")
 itemdescription = "SUMA 2 DE VIDA AL PLAYER"
 precio = 5
 tipo = 0
-
 
 [node name="InventoryUI" type="Control" node_paths=PackedStringArray("description")]
 layout_mode = 3
@@ -79,7 +75,6 @@ item = ExtResource("6_g8csi")
 
 [node name="Slot4" parent="Inventory/GridContainer" instance=ExtResource("3_uonyg")]
 layout_mode = 2
-
 item = Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
 
 
