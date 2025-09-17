@@ -3,6 +3,7 @@ extends Control
 
 var escena_nivel_principal = "res://Escenas/Nivel1.tscn"
 var icono_cursor = load("res://Assets/cursores mouse/pointer_a.svg")
+var mute : bool = false
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(icono_cursor)
@@ -28,11 +29,15 @@ func _on_volver_volumenes_pressed() -> void:
 func _on_mute_on_pressed() -> void:
 	$MenuPrincipal/MuteOn.visible = false
 	$MenuPrincipal/MuteOff.visible = true
+	mute = !mute
+	%MusicaDeFondo.stream_paused= mute
 
 
 func _on_mute_off_pressed() -> void:
 	$MenuPrincipal/MuteOff.visible = false
 	$MenuPrincipal/MuteOn.visible = true
+	mute = !mute
+	%MusicaDeFondo.stream_paused= mute
 
 
 func _on_exit_pressed() -> void:

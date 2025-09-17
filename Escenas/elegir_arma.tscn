@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://byrnvcfbalier"]
+
+[ext_resource type="Texture2D" uid="uid://br8lat07nw662" path="res://Assets/assets_curso/sprites/ui/bg.png" id="1_wwox0"]
+[ext_resource type="Texture2D" uid="uid://bnq5878g3ea2q" path="res://Assets/assets_curso/sprites/fondo/background_glacial_mountains_lightened.png" id="2_7x2v8"]
+
+[node name="ElegirArma" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LayerMadera" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="LayerMadera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wwox0")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="LayerFondo" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="TextureFondo" type="TextureRect" parent="LayerFondo"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7x2v8")
+expand_mode = 3
+stretch_mode = 5
