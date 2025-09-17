@@ -1,6 +1,13 @@
 extends Control
 
 
+var escena_nivel_principal = "res://Escenas/Nivel1.tscn"
+var icono_cursor = load("res://Assets/cursores mouse/pointer_a.svg")
+
+func _ready() -> void:
+	Input.set_custom_mouse_cursor(icono_cursor)
+	%MusicaDeFondo.play()
+
 func _on_opciones_pressed() -> void:
 	$OpcionesPanel.visible = true
 
@@ -30,3 +37,7 @@ func _on_mute_off_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_play_pressed() -> void:
+	get_tree().change_scene_to_file(escena_nivel_principal)

@@ -1,11 +1,30 @@
-[gd_scene load_steps=5 format=4 uid="uid://bwl5q8y0xsxnt"]
+[gd_scene load_steps=9 format=4 uid="uid://bwl5q8y0xsxnt"]
 
 [ext_resource type="PackedScene" uid="uid://gfhkvg8m0p8o" path="res://Escenas/creador_de_mapas.tscn" id="1_v8abc"]
+[ext_resource type="Script" path="res://Escenas/nivel_1.gd" id="1_yncvd"]
+[ext_resource type="Texture2D" uid="uid://bnq5878g3ea2q" path="res://Assets/assets_curso/sprites/fondo/background_glacial_mountains_lightened.png" id="2_n5p55"]
 [ext_resource type="PackedScene" uid="uid://dqrtg1ligbr21" path="res://Escenas/king_boss.tscn" id="3_7of7n"]
 [ext_resource type="PackedScene" uid="uid://jl1im8t5lps2" path="res://Escenas/player.tscn" id="3_b78e6"]
 [ext_resource type="PackedScene" uid="uid://dndaju0u8g58y" path="res://Escenas/hud.tscn" id="4_8vi1m"]
+[ext_resource type="PackedScene" uid="uid://d1hvnnaemeca8" path="res://Escenas/pocion_vida.tscn" id="6_45bt8"]
+[ext_resource type="AudioStream" uid="uid://be54mugx26jhs" path="res://Assets/assets_curso/audio/bgm/515683__fidsml__final-boss-music.wav" id="8_47csk"]
 
 [node name="Nivel1" type="Node2D"]
+script = ExtResource("1_yncvd")
+
+[node name="LayerFondo" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="TextureFondo" type="TextureRect" parent="LayerFondo"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n5p55")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="CreadorDeMapas" parent="." instance=ExtResource("1_v8abc")]
 
@@ -26,5 +45,12 @@ position = Vector2(312, 171)
 collision_layer = 2
 
 [node name="HUD" parent="." instance=ExtResource("4_8vi1m")]
+
+[node name="PocionVida" parent="." instance=ExtResource("6_45bt8")]
+position = Vector2(36, 249)
+
+[node name="AudioPelea" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_47csk")
+autoplay = true
 
 [editable path="CreadorDeMapas"]
