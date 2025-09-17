@@ -69,4 +69,7 @@ position = Vector2(4, 1)
 scale = Vector2(1, 0.6)
 shape = SubResource("CircleShape2D_ruvv4")
 
+[node name="TiempoDeVueloTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TiempoDeVueloTimer" to="." method="_on_tiempo_de_vuelo_timer_timeout"]

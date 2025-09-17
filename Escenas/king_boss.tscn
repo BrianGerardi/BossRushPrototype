@@ -1,9 +1,10 @@
-[gd_scene load_steps=102 format=3 uid="uid://dqrtg1ligbr21"]
+[gd_scene load_steps=105 format=3 uid="uid://dqrtg1ligbr21"]
 
 [ext_resource type="Script" path="res://Scripts/king_boss.gd" id="1_lqdpk"]
 [ext_resource type="Texture2D" uid="uid://bw3yqstmmittk" path="res://AssetsDeTest/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_monhc"]
 [ext_resource type="Texture2D" uid="uid://bhvdhbs5727lp" path="res://AssetsDeTest/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_qn1cl"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="3_fhqe2"]
+[ext_resource type="Script" path="res://Scripts/area_daño_laser.gd" id="4_ttdr4"]
 [ext_resource type="Script" path="res://Scripts/idle.gd" id="5_wexd0"]
 [ext_resource type="Script" path="res://Scripts/follow.gd" id="7_lg4vt"]
 [ext_resource type="Script" path="res://Scripts/melee_attack.gd" id="7_xcsdl"]
@@ -13,9 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/laser_beam.gd" id="10_kjlel"]
 [ext_resource type="Script" path="res://Scripts/death.gd" id="11_iaton"]
 [ext_resource type="Script" path="res://Scripts/dash.gd" id="12_dca6o"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_a3ev6"]
-radius = 15.2971
+[ext_resource type="Script" path="res://Scripts/area_daño_mele.gd" id="14_dxwtk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqq55"]
 atlas = ExtResource("1_monhc")
@@ -322,7 +321,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ylfot")
 }],
-"loop": true,
+"loop": false,
 "name": &"armor_buff",
 "speed": 8.0
 }, {
@@ -652,6 +651,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imxop"]
+size = Vector2(256, 20)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xapgl"]
 radius = 22.0
 height = 46.0
@@ -659,24 +661,17 @@ height = 46.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex3ni"]
 radius = 98.1835
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6ut2"]
+radius = 23.0217
+
 [node name="KingBoss" type="CharacterBody2D" groups=["enemigo"]]
 position = Vector2(93, 72)
-collision_layer = 2
 script = ExtResource("1_lqdpk")
-
-[node name="Area2D_DañoMele" type="Area2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(24, 10)
-monitoring = false
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D_DañoMele"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_a3ev6")
 
 [node name="AnimatedSprite2D_animacionesgolem" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_5o12g")
-animation = &"death"
+animation = &"armor_buff"
 autoplay = "idle"
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -687,7 +682,13 @@ unique_name_in_owner = true
 position = Vector2(96, 16)
 sprite_frames = SubResource("SpriteFrames_22tpb")
 animation = &"laser"
-frame_progress = 0.346396
+
+[node name="AreaDañoLaser" type="Area2D" parent="Pivot"]
+script = ExtResource("4_ttdr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AreaDañoLaser"]
+position = Vector2(118, 0)
+shape = SubResource("RectangleShape2D_imxop")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -748,6 +749,7 @@ text = "debug
 "
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_xapgl")
 
@@ -785,7 +787,16 @@ script = ExtResource("7_lg4vt")
 [node name="Dash" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("12_dca6o")
 
-[connection signal="body_entered" from="Area2D_DañoMele" to="FiniteStateMachine/MeleeAttack" method="_on_area_2d_daño_mele_body_entered"]
+[node name="AreaDañoMele" type="Area2D" parent="."]
+script = ExtResource("14_dxwtk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDañoMele"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_l6ut2")
+
 [connection signal="frame_changed" from="AnimatedSprite2D_animacionesgolem" to="FiniteStateMachine/MeleeAttack" method="_on_animated_sprite_2d_animacionesgolem_frame_changed"]
+[connection signal="frame_changed" from="Pivot/RangeSprites" to="Pivot/AreaDañoLaser" method="_on_range_sprites_frame_changed"]
+[connection signal="body_entered" from="Pivot/AreaDañoLaser" to="Pivot/AreaDañoLaser" method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/MeleeAttack" method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="AreaDañoMele" to="AreaDañoMele" method="_on_body_entered"]
