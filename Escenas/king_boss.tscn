@@ -398,7 +398,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_07s5e")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 8.0
 }, {
@@ -659,10 +659,9 @@ height = 46.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex3ni"]
 radius = 98.1835
 
-[node name="KingBoss" type="CharacterBody2D"]
+[node name="KingBoss" type="CharacterBody2D" groups=["enemigo"]]
 position = Vector2(93, 72)
 collision_layer = 2
-collision_mask = 0
 script = ExtResource("1_lqdpk")
 
 [node name="Area2D_DañoMele" type="Area2D" parent="."]
@@ -677,10 +676,8 @@ shape = SubResource("CircleShape2D_a3ev6")
 [node name="AnimatedSprite2D_animacionesgolem" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_5o12g")
-animation = &"armor_buff"
+animation = &"death"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.955379
 
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2(0, -18)

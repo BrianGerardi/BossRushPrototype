@@ -3,7 +3,7 @@ extends Node2D
 @export var sprite_disparo : Sprite2D
 var direccion_disparo : Vector2
 @export var velocidad_de_disparo : float = 200.0
-var daño = 0
+var daño = 10
 
 func _ready() -> void:
 	var textura = Global.get_textura_disparo()
@@ -35,6 +35,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_area_2d_disparo_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemigo"):
+		print ("hacer daño disparo en disparo")
 		if body.has_method("hacer_daño_boss"): #si nos olvidamos de poner la funcion hacer_daño() en el enemigo con esto no va a tirar error
 			body.hacer_daño_boss(daño)
 			queue_free()

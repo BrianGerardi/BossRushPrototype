@@ -8,11 +8,11 @@ var DEF = 0
 var boss_health = 100:
 	set (value):
 		boss_health = value 
-		ProgressBar.value = value
+		progress_bar.value = value
 		if value <= 0:
-			ProgressBar.visible = false
+			progress_bar.visible = false
 			find_child("FiniteStateMachine").change_state("Death")
-		elif value <= ProgressBar.max_value / 2 and DEF == 0:
+		elif value <= progress_bar.max_value / 2 and DEF == 0:
 			DEF = 5
 			find_child("FiniteStateMachine").change_state("ArmorBuff")
 
@@ -31,7 +31,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	velocity = direction.normalized() * 40
 	move_and_collide(velocity * delta)
-func hacer_daño_boss (daño : int):
-	boss_health -= daño - DEF
-	Global.sumar_monedad(1)
+func hacer_daño_boss (daño : float):
+	print ("hacer daño boss en boss")
+	boss_health -= (daño - DEF)
+	Global.sumar_monedas(daño)
+	Global.guardar_datos()
 	#llamar a sumar monedas
