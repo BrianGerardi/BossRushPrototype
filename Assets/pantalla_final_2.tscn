@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://xxcp5luyw8og"]
+
+[ext_resource type="Script" path="res://Assets/pantalla_final_2.gd" id="1_sbs3e"]
+[ext_resource type="FontFile" uid="uid://b3bhqlyo5md5r" path="res://Assets/assets_curso/fuentes/CascadiaMono-Bold.ttf" id="1_w76b7"]
+[ext_resource type="Theme" uid="uid://d2rfk5ewu2stu" path="res://tema/MainMenuTema.tres" id="2_x2v6t"]
+[ext_resource type="AudioStream" uid="uid://mgnysghq7n4k" path="res://Assets/assets_curso/audio/bgm/musiquita_linda.ogg" id="4_8cwne"]
+
+[node name="PantallaFinal2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sbs3e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.29234, 0.168451, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.5
+offset_top = -134.0
+offset_right = 451.5
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_w76b7")
+theme_override_font_sizes/font_size = 35
+text = "¡Gracias por jugar!
+Juego desarrollado para el curso:
+Game Design + Godot - Facu y Hauser - (BAGD)
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_w76b7")
+theme_override_font_sizes/font_size = 35
+text = "Creado por:
+Brian Gerardi
+Marcos Salinas"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.5
+offset_top = -130.0
+offset_right = 143.5
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_x2v6t")
+theme_override_font_sizes/font_size = 33
+text = "VOLVER AL MENU"
+
+[node name="MusicaDeFondo" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_8cwne")
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
