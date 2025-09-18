@@ -20,6 +20,7 @@ var estado_actual : estados_player = estados_player.IDLE
 var last_direction = "down"
 
 func _ready() -> void:
+	cooldown_disparo = Global.get_cadencia_disparo()
 	Global.player_set_cooldown_disparo.connect(set_cooldown_disparo)
 	timer_disparar.wait_time = cooldown_disparo
 
@@ -40,6 +41,7 @@ func manejar_input(delta : float):
 	else:
 		velocity = input_direction * velocidad_caminar
 		estado_actual = estados_player.CORRER
+		ejecutar_sonido_pasos()
 		if abs (input_direction.x) > abs(input_direction.y):
 			if input_direction.x > 0:
 				last_direction = "right"
@@ -121,3 +123,8 @@ func disparar():
 	instancia_disparo.rotation = arma_player.global_rotation #para que apunte correctamente, porque el disparo solo va hacia su adelante
 	instancia_disparo.global_position = arma_player.get_centro_arma_position() #lo coloco en la posicion del arma
 	get_tree().current_scene.add_child(instancia_disparo) #lo agrego como hijo del nivel, no de player
+	%AudioDisparo.play()
+
+
+func ejecutar_sonido_pasos():
+	%AudioPasos.play()

@@ -1,15 +1,54 @@
-[gd_scene load_steps=10 format=3 uid="uid://rwd7512um7ug"]
+[gd_scene load_steps=17 format=3 uid="uid://rwd7512um7ug"]
 
 [ext_resource type="Texture2D" uid="uid://dtfglfucodsbr" path="res://UIAssetsTest/png/Panel/Window/Big.png" id="1_7fw6w"]
+[ext_resource type="Theme" uid="uid://d2rfk5ewu2stu" path="res://tema/MainMenuTema.tres" id="1_ea1s7"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_rfvfo"]
 [ext_resource type="Texture2D" uid="uid://bnvkjgdm5teem" path="res://UIAssetsTest/png/Buttons/Rect-Medium/PlayText/Default.png" id="2_64g4n"]
 [ext_resource type="Texture2D" uid="uid://ba0jw5eewljet" path="res://UIAssetsTest/png/Buttons/Rect-Medium/PlayText/Hover.png" id="3_562l7"]
+[ext_resource type="Texture2D" uid="uid://br8lat07nw662" path="res://Assets/assets_curso/sprites/ui/bg.png" id="3_ua5d5"]
+[ext_resource type="Texture2D" uid="uid://djy6jqfpdle1h" path="res://Assets/assets_curso/sprites/ui/menu_titulo/logo-rework.png" id="4_3xqe0"]
 [ext_resource type="Texture2D" uid="uid://bitk08w5xb7kd" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOn/Default.png" id="4_f3x71"]
 [ext_resource type="Texture2D" uid="uid://bmemdoesfur2h" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOn/Hover.png" id="5_61lv5"]
 [ext_resource type="Texture2D" uid="uid://c1d27iu8s2niv" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOff/Default.png" id="7_o1gfq"]
 [ext_resource type="Texture2D" uid="uid://e6pit23lgtun" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOff/Hover.png" id="8_wotr4"]
+[ext_resource type="AudioStream" uid="uid://mgnysghq7n4k" path="res://Assets/assets_curso/audio/bgm/musiquita_linda.ogg" id="9_6u8w4"]
+[ext_resource type="Texture2D" uid="uid://bnq5878g3ea2q" path="res://Assets/assets_curso/sprites/fondo/background_glacial_mountains_lightened.png" id="10_wlr8p"]
 
-[sub_resource type="Theme" id="Theme_8kfex"]
+[sub_resource type="Animation" id="Animation_4q6gy"]
+resource_name = "mostrar_logo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LayerLogo/Logo:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(669, -70), Vector2(669, 177.83), Vector2(669, 155)]
+}
+
+[sub_resource type="Animation" id="Animation_rp3wc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LayerLogo/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(669, 155)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m02p8"]
+_data = {
+"RESET": SubResource("Animation_rp3wc"),
+"mostrar_logo": SubResource("Animation_4q6gy")
+}
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -18,8 +57,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_8kfex")
+theme = ExtResource("1_ea1s7")
 script = ExtResource("1_rfvfo")
+
+[node name="LayerFondo" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="TextureFondo" type="TextureRect" parent="LayerFondo"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_wlr8p")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="MenuPrincipal" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -28,14 +81,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -537.0
-offset_top = -259.5
-offset_right = 537.0
-offset_bottom = 259.5
+offset_left = -657.0
+offset_top = -352.0
+offset_right = 690.0
+offset_bottom = 338.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7fw6w")
-region_rect = Rect2(36, 23, 546, 351)
+texture = ExtResource("3_ua5d5")
+region_rect = Rect2(141.135, 100.62, 546, 351)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuPrincipal"]
 layout_mode = 1
@@ -50,9 +103,12 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ea1s7")
+theme_override_constants/separation = 11
 
 [node name="Play" type="TextureButton" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
+action_mode = 0
 texture_normal = ExtResource("2_64g4n")
 texture_hover = ExtResource("3_562l7")
 
@@ -212,6 +268,39 @@ size_flags_vertical = 0
 text = "VOLUMEN"
 horizontal_alignment = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m02p8")
+}
+autoplay = "mostrar_logo"
+
+[node name="LayerLogo" type="CanvasLayer" parent="."]
+
+[node name="Logo" type="TextureRect" parent="LayerLogo"]
+light_mask = 2
+visibility_layer = 2
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -610.0
+offset_right = 308.0
+offset_bottom = -283.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_3xqe0")
+expand_mode = 1
+
+[node name="MusicaDeFondo" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_6u8w4")
+
+[connection signal="pressed" from="MenuPrincipal/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuPrincipal/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="MenuPrincipal/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MenuPrincipal/MuteOn" to="." method="_on_mute_on_pressed"]
