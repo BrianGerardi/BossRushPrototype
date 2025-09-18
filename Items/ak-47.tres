@@ -6,10 +6,16 @@
 
 [resource]
 script = ExtResource("2_jqno2")
-cooldown_disparar = 0.3
+cooldown_disparar = 0.45
 sprite_disparo = ExtResource("3_d8007")
+"daño_disparo" = 11.0
 name = "AK-47"
 icon = ExtResource("1_crkdu")
-itemdescription = "si en el counter jugabas con los terro COMPRALA"
-precio = 10
+itemdescription = "- AK-47 tipica arma de los terro.
+- Su cadencia es menor que la de UZI pero...
+Se compenza con un alto daño por disparo.
+
+Daño: 11
+Cadencia: MEDIA"
+precio = 120
 tipo = 2

@@ -10,3 +10,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_audio_pelea_finished() -> void:
+	$AudioPelea.play() #no es la mejor forma de hacerlo loopable pero tengo sueño
+	#el audio no me tiraba la opcion y el convertor online no quiso andar

@@ -108,6 +108,7 @@ theme_override_constants/separation = 11
 
 [node name="Play" type="TextureButton" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
+action_mode = 0
 texture_normal = ExtResource("2_64g4n")
 texture_hover = ExtResource("3_562l7")
 
@@ -276,6 +277,9 @@ autoplay = "mostrar_logo"
 [node name="LayerLogo" type="CanvasLayer" parent="."]
 
 [node name="Logo" type="TextureRect" parent="LayerLogo"]
+light_mask = 2
+visibility_layer = 2
+z_index = -1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -284,9 +288,11 @@ anchor_bottom = 0.5
 offset_left = -291.0
 offset_top = -610.0
 offset_right = 308.0
-offset_bottom = -211.0
+offset_bottom = -283.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("4_3xqe0")
 expand_mode = 1
 

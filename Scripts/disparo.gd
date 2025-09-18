@@ -3,10 +3,11 @@ extends Node2D
 @export var sprite_disparo : Sprite2D
 var direccion_disparo : Vector2
 @export var velocidad_de_disparo : float = 200.0
-var daño = 10
+var daño = 1
 
 func _ready() -> void:
 	var textura = Global.get_textura_disparo()
+	daño = Global.get_daño_disparo()
 	if textura!=null:
 		set_textura_disparo(textura)
 

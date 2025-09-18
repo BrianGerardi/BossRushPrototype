@@ -38,7 +38,7 @@ tile_map_data = PackedByteArray("AAAcAAAAAAADAAAAAAAcAAEAAAADAAEAAAAcAAIAAAADAAE
 position = Vector2(43, 67)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
+zoom = Vector2(3.7, 3.7)
 
 [node name="KingBoss" parent="." instance=ExtResource("3_7of7n")]
 position = Vector2(312, 171)
@@ -52,5 +52,7 @@ position = Vector2(36, 249)
 [node name="AudioPelea" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_47csk")
 autoplay = true
+
+[connection signal="finished" from="AudioPelea" to="." method="_on_audio_pelea_finished"]
 
 [editable path="CreadorDeMapas"]

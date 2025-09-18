@@ -9,10 +9,14 @@ signal player_set_cooldown_disparo(tiempo_de_cooldown : float)
 signal cambiar_sprite_disparo(sprite_nuevo : Texture2D)
 signal cambiar_sprite_arma(sprite_nuevo : Texture2D)
 var textura_disparo = null
+var textura_arma = null
+var daño_disparo = null
+var cadencia_disparo = null
 
 
 func _ready() -> void:
 	cambiar_sprite_disparo.connect(_on_cambiar_sprite_disparo)
+	cambiar_sprite_arma.connect(_on_cambiar_sprite_arma)
 	cargar_datos() #para guardar las monedas en memoria, más adelante si llegamos meter los items comprados
 
 
@@ -51,6 +55,11 @@ func _on_cambiar_sprite_disparo(textura_nueva):
 func get_textura_disparo():
 	return textura_disparo
 
+func get_textura_arma():
+	return textura_arma
+
+func _on_cambiar_sprite_arma(textura_nueva):
+	textura_arma = textura_nueva
 
 func alcanzan_monedas_para_comprar(precio_producto):
 	if monedas_global>=precio_producto:
@@ -58,6 +67,18 @@ func alcanzan_monedas_para_comprar(precio_producto):
 	else:
 		return false
 
+
+func get_cadencia_disparo():
+	return cadencia_disparo
+
+func set_cadencia_disparo(valor_cadencia):
+	cadencia_disparo = valor_cadencia
+
+func get_daño_disparo():
+	return daño_disparo
+
+func set_daño_disparo(valor_disparo):
+	daño_disparo = valor_disparo
 
 func realizar_compra(precio_producto):
 	monedas_global-= precio_producto

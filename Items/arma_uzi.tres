@@ -6,10 +6,16 @@
 
 [resource]
 script = ExtResource("2_usoru")
-cooldown_disparar = 0.2
+cooldown_disparar = 0.15
 sprite_disparo = ExtResource("3_ruo1b")
+"daño_disparo" = 4.0
 name = "UZI"
 icon = ExtResource("1_rfsnu")
-itemdescription = "Uzi para rushear b manito"
-precio = 4
+itemdescription = "- Uzi es un arma ligera y rápida.
+- Es el arma con mayor cadencia de disparo
+- Aunque su daño sigue siendo inferior a sus competidoras, es la más elegida para rushear.
+
+Daño: 4
+Cadencia: ALTA"
+precio = 50
 tipo = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://jl1im8t5lps2"]
+[gd_scene load_steps=145 format=3 uid="uid://jl1im8t5lps2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4smy4"]
 [ext_resource type="Texture2D" uid="uid://c7thrfuotk58y" path="res://AssetsDeTest/Char_Sprites/char_attack_down_anim_strip_6.png" id="2_48v6s"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://081qa16ioq31" path="res://Assets/Arte/shadeout/Osvaldo_LUZ_QUIETO.png" id="13_6xt4w"]
 [ext_resource type="PackedScene" uid="uid://doq5gnqwbvhr5" path="res://Escenas/arma_player.tscn" id="14_8vhtm"]
 [ext_resource type="Texture2D" uid="uid://vy6yxn02qxla" path="res://Assets/Arte/shadeout/Osvaldo_LUZ_SALTO.png" id="15_5cm5h"]
+[ext_resource type="AudioStream" uid="uid://dqcr5c4qjcvf8" path="res://Sonidos/773873__mrgungus__shotgun-shoot.wav" id="21_c5vwn"]
+[ext_resource type="AudioStream" uid="uid://cd2g64kdjlwqs" path="res://Assets/assets_curso/audio/sfx/pasos.ogg" id="22_5owfw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcfbq"]
 radius = 8.0
@@ -1004,3 +1006,11 @@ unique_name_in_owner = true
 [node name="TimerDisparar" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="AudioDisparo" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("21_c5vwn")
+
+[node name="AudioPasos" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("22_5owfw")

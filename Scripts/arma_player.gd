@@ -3,10 +3,13 @@ extends Node2D
 @export var sprite_arma : Sprite2D
 
 func _ready() -> void:
-	Global.cambiar_sprite_arma.connect(set_textura_arma)
+	var textura = Global.get_textura_arma()
+	if textura!=null:
+		set_textura_arma(textura)
 
 
 func set_textura_arma(nueva_textura : Texture2D):
+	print("cambiar textura arma en armaPlayer")
 	sprite_arma.texture = nueva_textura
 
 

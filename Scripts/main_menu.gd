@@ -1,12 +1,12 @@
 extends Control
 
 
-var escena_nivel_principal = "res://Escenas/Nivel1.tscn"
+var escena_nivel_principal = "res://Escenas/elegir_arma.tscn"
 var icono_cursor = load("res://Assets/cursores mouse/pointer_a.svg")
 var mute : bool = false
 
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(icono_cursor)
+#	Input.set_custom_mouse_cursor(icono_cursor)
 	%MusicaDeFondo.play()
 
 func _on_opciones_pressed() -> void:
@@ -45,4 +45,5 @@ func _on_exit_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
+	print("aprete play")
 	get_tree().change_scene_to_file(escena_nivel_principal)

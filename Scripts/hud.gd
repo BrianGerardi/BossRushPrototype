@@ -6,6 +6,7 @@ extends Control
 
 
 func _ready() -> void:
+	%LabelGameOver.hide()
 	Global.game_over.connect(_on_game_over)
 	Global.aumentar_vidas.connect(_on_aumentar_vidas)
 	Global.hacer_daño_player.connect(_on_hacer_daño)
@@ -16,7 +17,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_game_over():
 	Global.guardar_datos()
-	pass
+	%LabelGameOver.show()
+	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://Escenas/elegir_arma.tscn")
+
 
 func _on_aumentar_vidas(cantidad_vidas : int):
 	for vidas in range(cantidad_vidas):
@@ -28,5 +32,6 @@ func _on_hacer_daño(cantidad_de_daño: int):
 	#otra forma es consultar si player todavia tiene vida, hay que definirlo, puntos como ahora o valores de 0 a 100
 	if vidas > 0: #si hay vidas disponibles
 		contenedor_vidas.get_child(vidas-1).queue_free()
+		%AudioQuitarVida.play()
 	else:
 		Global.game_over.emit()
