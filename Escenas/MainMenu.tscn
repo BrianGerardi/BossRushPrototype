@@ -14,21 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://mgnysghq7n4k" path="res://Assets/assets_curso/audio/bgm/musiquita_linda.ogg" id="9_6u8w4"]
 [ext_resource type="Texture2D" uid="uid://bnq5878g3ea2q" path="res://Assets/assets_curso/sprites/fondo/background_glacial_mountains_lightened.png" id="10_wlr8p"]
 
-[sub_resource type="Animation" id="Animation_4q6gy"]
-resource_name = "mostrar_logo"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LayerLogo/Logo:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(669, -70), Vector2(669, 177.83), Vector2(669, 155)]
-}
-
 [sub_resource type="Animation" id="Animation_rp3wc"]
 length = 0.001
 tracks/0/type = "value"
@@ -42,6 +27,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(669, 155)]
+}
+
+[sub_resource type="Animation" id="Animation_4q6gy"]
+resource_name = "mostrar_logo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LayerLogo/Logo:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(669, -70), Vector2(669, 177.83), Vector2(669, 155)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m02p8"]

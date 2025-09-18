@@ -1,5 +1,5 @@
 extends GolemBossState
-var escena_final = "res://Escenas/pantalla_final.tscn"
+var escena_final = "res://Assets/pantalla_final_2.tscn"
 
 
 func enter ():
