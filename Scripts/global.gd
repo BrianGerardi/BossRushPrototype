@@ -19,7 +19,6 @@ func _ready() -> void:
 	cambiar_sprite_arma.connect(_on_cambiar_sprite_arma)
 	cargar_datos() #para guardar las monedas en memoria, más adelante si llegamos meter los items comprados
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
