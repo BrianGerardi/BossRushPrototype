@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rwd7512um7ug"]
+[gd_scene load_steps=18 format=3 uid="uid://rwd7512um7ug"]
 
 [ext_resource type="Texture2D" uid="uid://dtfglfucodsbr" path="res://UIAssetsTest/png/Panel/Window/Big.png" id="1_7fw6w"]
 [ext_resource type="Theme" uid="uid://d2rfk5ewu2stu" path="res://tema/MainMenuTema.tres" id="1_ea1s7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://e6pit23lgtun" path="res://UIAssetsTest/png/Buttons/Square-Medium/SoundOff/Hover.png" id="8_wotr4"]
 [ext_resource type="AudioStream" uid="uid://mgnysghq7n4k" path="res://Assets/assets_curso/audio/bgm/musiquita_linda.ogg" id="9_6u8w4"]
 [ext_resource type="Texture2D" uid="uid://bnq5878g3ea2q" path="res://Assets/assets_curso/sprites/fondo/background_glacial_mountains_lightened.png" id="10_wlr8p"]
+[ext_resource type="Script" path="res://Scripts/master.gd" id="12_goy1u"]
 
 [sub_resource type="Animation" id="Animation_rp3wc"]
 length = 0.001
@@ -238,20 +239,32 @@ text = "Master"
 
 [node name="Master" type="HSlider" parent="Volumen/VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("12_goy1u")
+bus_name = "Master"
 
 [node name="SFX" type="Label" parent="Volumen/VBoxContainer"]
 layout_mode = 2
 text = "SFX"
 
-[node name="Master2" type="HSlider" parent="Volumen/VBoxContainer"]
+[node name="SFX2" type="HSlider" parent="Volumen/VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("12_goy1u")
+bus_name = "SFX"
 
 [node name="Music" type="Label" parent="Volumen/VBoxContainer"]
 layout_mode = 2
 text = "Music"
 
-[node name="Master3" type="HSlider" parent="Volumen/VBoxContainer"]
+[node name="Music2" type="HSlider" parent="Volumen/VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("12_goy1u")
+bus_name = "Music"
 
 [node name="VolverVolumenes" type="Button" parent="Volumen/VBoxContainer"]
 layout_mode = 2
@@ -286,9 +299,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -291.0
-offset_top = -610.0
+offset_top = -385.0
 offset_right = 308.0
-offset_bottom = -283.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -299,6 +312,7 @@ expand_mode = 1
 [node name="MusicaDeFondo" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("9_6u8w4")
+bus = &"Music"
 
 [connection signal="pressed" from="MenuPrincipal/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuPrincipal/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]

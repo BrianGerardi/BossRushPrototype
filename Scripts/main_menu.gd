@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_opciones_pressed() -> void:
 	$OpcionesPanel.visible = true
+	$MenuPrincipal/VBoxContainer.visible = false
 
 
 func _on_volver_pressed() -> void:
@@ -24,6 +25,7 @@ func _on_volumen_pressed() -> void:
 func _on_volver_volumenes_pressed() -> void:
 	$Volumen/VBoxContainer/VolverVolumenes.visible = false
 	$Volumen.visible = false
+	$MenuPrincipal/VBoxContainer.visible = true
 
 
 func _on_mute_on_pressed() -> void:

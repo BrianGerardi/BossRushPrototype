@@ -666,6 +666,7 @@ radius = 23.0217
 
 [node name="KingBoss" type="CharacterBody2D" groups=["enemigo"]]
 position = Vector2(93, 72)
+collision_layer = 2
 script = ExtResource("1_lqdpk")
 
 [node name="AnimatedSprite2D_animacionesgolem" type="AnimatedSprite2D" parent="."]
@@ -696,16 +697,13 @@ shape = SubResource("RectangleShape2D_imxop")
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(200, 0)
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -27.0
-offset_right = 2.0
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 27.0
 grow_horizontal = 2
-grow_vertical = 0
 value = 100.0
 
 [node name="Label" type="Label" parent="UI/ProgressBar"]
